@@ -209,7 +209,12 @@ minetest.register_globalstep(function (dtime)
             starc = (starc + 1) % 4
 		end
 		
-		h_text = s_time .. "   " .. s_star .. s_rwt .. "\n" .. s_lag
+		-- by Thomas: 12.05.2022
+		local maxilag = minetest.get_server_max_lag()
+		local maxslag = tostring(maxilag)
+		maxslag = string.sub(maxilag,1,6)
+		
+		h_text = s_time .. "   " .. s_star .. "  max_lag: " .. maxslag .. "\n" .. s_lag
 		
 		h_tmr = h_int
 	else
